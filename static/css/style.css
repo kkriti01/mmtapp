@@ -1,0 +1,46 @@
+.vr {
+    width:3px;
+    background-color:#000;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:250px;
+    margin-top: 52px;
+}
+.search-control
+{
+    margin-bottom: 50px;
+}
+.repeat_items
+{
+    background-color: yellow;
+    box-shadow: 10px 10px 5px grey;
+    margin-left: inherit;
+
+
+}
+.title
+{
+    display: inline;
+    font-size: 15px;
+}
+.right_items
+{
+    display: inline;
+    font-size: 13px;
+    text-align: right;
+
+}
+.image
+{
+    display: inline;
+    max-height: 50px;
+}
+h3{
+    border-radius: 25px;
+
+}
+.pagination
+{
+    margin-left: 500px;
+}

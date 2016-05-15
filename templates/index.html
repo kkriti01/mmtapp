@@ -1,0 +1,107 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+      <title>MakeMyTrip--AIR</title>
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+           <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+           <link rel="stylesheet" href="/static/css/style.css">
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+               <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+               <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+               <script src="/static/js/app.js"></script>
+               <script src="/static/js/controller.js"></script>
+               <script src="/static/js/countries.json"></script>
+</head>
+<body ng-controller="airportcontroller">
+    <nav class="navbar navbar-default">
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <a class="navbar-brand" href="#">MyPort-one stop search for Airports</a>
+            </div>
+        </div>
+    </nav>
+<div class="container">
+     <div class="row">
+        <div class="col-sm-4">
+             <!--<h3>Type</h3>
+                 <div class="checkbox">
+                     <label>
+                     <input type="checkbox" value="All" ng-model="airporttype.all">All
+                     </label>
+                 </div>
+                 <div class="checkbox" >
+                      <label>
+                      <input type="checkbox" ng-model="airporttype.civilAirports" value="Civil Airports">Civil Airports
+                      </label>
+                </div>
+                <div class="checkbox">
+                     <label>
+                     <input type="checkbox" value="Military Airports" ng-model="airporttype.militaryAirports">Military Airports
+                     </label>
+                </div>
+                <div class="checkbox">
+                     <label>
+                     <input type="checkbox" value="Sea Plane Base" ng-model="airporttype.seaPlaneBase">Sea Plane Base
+                     </label>
+                </div>
+                <div class="checkbox">
+                     <label>
+                     <input type="checkbox" value="Harbours" ng-model="airporttype.harbours">Harbours
+                     </label>
+                </div>-->
+             <h3>Sort by</h3>
+             <div class="sorted" >
+                <div class="radio">
+                     <label>
+                     <input type="radio" name ="sort" ng-model="sorttype.elevation" value="elevation">Elevation
+                     </label>
+                                    </div>
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="sort" ng-model="sorttype.direct_flight" ng-value="direct_flights" >Direct Flight
+                    </label>
+                    </div>
+               <div class="radio">
+                    <label>
+                    <input type="radio" name="sort" ng-model="sorttype.ratings" value="rating">Rating
+                    </label>
+              </div>
+            </div>
+     </div>
+                     <div class="vr">&nbsp;</div>
+    <div class="col-sm-8">
+        <div class="search-control">
+            <input type="name"  size="50" placeholder="Search" ng-model="key">
+            <button ng-click="search()">Search</button>
+        </div>
+        </form>
+      <div class="airports-list">
+      <div class="repeat_items" ng-repeat="list in airports.results |orderBy:[sorttype.elevation,sorttype.direct_flight,sorttype.ratings]|orderBy:airporttype.civilAirports">
+            <div class="col-sm-4">
+                <div class="image">
+                    <a href="#"><img ng-src="{/ getImage(list.country) /}" alt="{/list.name/}" height="50px;"></a>
+                </div>
+                <div class="title">
+                     <p>{/list.name/}</p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1">
+              <div class="right_items">
+              <ul>
+                 <li >{/list.city/},{/list.state/}</li>
+                 <lli> Direct Flight :{/list.direct_flights/}</li>
+                 <li>Elevation: {/list.elev/}ft.<li>
+              </ul>
+              </div>
+            </div>
+    </div>
+    </div>
+</div>
+<div class="text-center">
+          <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+          </div>
+</body>
+</html>
+
